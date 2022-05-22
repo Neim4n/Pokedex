@@ -1,0 +1,151 @@
+.bug {
+  background: #729f3f;
+}
+
+.dragon {
+  background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+}
+
+.fairy {
+  background: #fdb9e9;
+}
+
+.fire {
+  background: #fd7d24;
+}
+
+.ghost {
+  background: #7b62a3;
+}
+
+.ground {
+  background: #f7de3f;
+  color: black !important;
+}
+
+.normal {
+  background: #a4acaf;
+  color: black !important;
+}
+
+.psychic {
+  background: #f366b9;
+}
+
+.steel {
+  background: #9eb7b8;
+  color: black !important;
+}
+
+.dark {
+  background: #707070;
+}
+
+.electric {
+  background: #eed535;
+  color: black !important;
+}
+
+.fighting {
+  background: #d56723;
+}
+
+.flying {
+  background: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
+  color: black !important;
+}
+
+.grass {
+  background: #9bcc50;
+  color: black !important;
+}
+
+.ice {
+  background: #51c4e7;
+  color: black !important;
+}
+
+.poison {
+  background: #b97fc9;
+}
+
+.rock {
+  background: #a38c21;
+}
+
+.water {
+  background: #4592c4;
+}
+
+.pokedex__pokemon-card {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  border-radius: 20px;
+  opacity: 0;
+  transform: translate(0, 100%);
+  transition: 0.3s ease-in-out transform, 0.1s ease-in-out opacity 0.4s;
+}
+.pokedex__pokemon-card.hidden {
+  display: none;
+}
+.pokedex__pokemon-card.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.pokedex__pokemon-card:hover {
+  transform: scale(1.05) translate(0, 0);
+  box-shadow: 0 0 10px 0 rgba(206, 206, 206, 0.3);
+}
+.pokedex__pokemon-card:hover .pokemon-card__image img {
+  transform: scale(1.05);
+}
+.pokedex__pokemon-card .pokemon-card__image {
+  overflow: hidden;
+}
+.pokedex__pokemon-card .pokemon-card__image img {
+  width: 100%;
+  height: auto;
+  background: #F2F2F2;
+  transition: 0.3s ease-in-out transform;
+}
+.pokedex__pokemon-card .pokemon-card__info {
+  margin: 5px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.pokedex__pokemon-card .pokemon-card__info .pokemon-card__order {
+  font-size: 18px;
+  font-family: "Roboto", arial, sans-serif;
+  font-weight: bold;
+  color: #616161;
+  margin-bottom: 10px;
+}
+.pokedex__pokemon-card .pokemon-card__info .pokemon-card__name {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.pokedex__pokemon-card .pokemon-card__info .pokemon-card__types {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.pokedex__pokemon-card .pokemon-card__info .pokemon-card__types .types__item {
+  width: 75px;
+  height: 20px;
+  padding: 3px 0;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+.pokedex__pokemon-card .pokemon-card__info .pokemon-card__types .types__item:first-letter {
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=PokemonCard.css.map */

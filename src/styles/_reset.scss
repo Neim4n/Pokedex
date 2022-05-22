@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*Обнуление*/
 * {
   padding: 0;
@@ -75,34 +74,3 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
-.wrapper {
-  font-family: Roboto, sans-serif;
-  background: url("./images/body_bg.jpg");
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.wrapper .main {
-  flex: 1 1 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-@media screen and (max-width: 767.98px) {
-  .wrapper .main .pokedex {
-    padding: 20px;
-  }
-  .wrapper .main .pokedex .pokedex__container {
-    padding: 10px;
-  }
-}
-@media screen and (max-width: 499.98px) {
-  .wrapper .main .pokedex {
-    padding: 0px;
-  }
-  .wrapper .main .pokedex .pokedex__container {
-    padding: 10px;
-  }
-}
-
-/*# sourceMappingURL=App.css.map */
