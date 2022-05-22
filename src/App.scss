@@ -1,0 +1,43 @@
+@import "styles/reset";
+
+.wrapper {
+  font-family: Roboto, sans-serif;
+  background: url("./images/body_bg.jpg");
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .main {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and(max-width: 767.98px) {
+  .wrapper {
+    .main {
+      .pokedex {
+        padding: 20px;
+
+        .pokedex__container {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 499.98px) {
+  .wrapper {
+    .main {
+      .pokedex {
+        padding: 0px;
+
+        .pokedex__container {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

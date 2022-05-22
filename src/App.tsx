@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Pokedex from './components/Pokedex';
 import './App.css';
+import PokemonPage from './components/PokemonPage';
+import Header from './components/Header';
+import { useAction } from './hooks/useAction';
+import Loader from './components/Loader';
 
 function App() {
+  const { fetchAllTypes, fetchAllPokemons } = useAction();
+  useEffect(() => {
+    fetchAllTypes();
+    fetchAllPokemons();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="wrapper">
+        <Header />
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<Pokedex />} />
+            <Route path="/:pokemon" element={<PokemonPage />} />
+          </Routes>
+        </main>
+        <Loader />
+      </div>
+    </BrowserRouter>
   );
 }
 
