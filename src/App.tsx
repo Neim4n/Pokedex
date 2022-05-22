@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import Pokedex from './components/Pokedex';
 import './App.css';
 import PokemonPage from './components/PokemonPage';
@@ -15,7 +15,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter basename="/">
       <div className="wrapper">
         <Header />
         <main className="main">
@@ -26,7 +26,7 @@ function App() {
         </main>
         <Loader />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
