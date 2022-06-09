@@ -1,5 +1,5 @@
 # Pekedex
-🔘 [Pokedex](https://neim4n.github.io/Pokedex/) React Web Application created for comfortably view the list of pokemon, their abilities and characteristics..
+🔘 [Pokedex](https://neim4n.github.io/Pokedex/) React Web Application created for comfortably view the list of pokemon, their abilities and characteristics.
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@
 
  ### API
 
- These APIs help me make my site more flexible and easier to use. With the help of these APIs, I was able to get up-to-date information about currencies and the situation in the world.
+ These APIs help me make my site more flexible and easier to use. With the help of these APIs, I was able to get information about pokemons.
 
 - [Pokémon API](https://pokeapi.co/)
 
@@ -48,4 +48,4 @@ To make a responsive and adaptive design for my project, was used technologies s
 For comfortable writing component styles, was used a preprocessor SCSS.
 ## Demo
 To see what it looks like in your own browser
-➡ [Click]([https://neim4n.github.io/Pokedex)
+➡ [Click](https://neim4n.github.io/Pokedex)
