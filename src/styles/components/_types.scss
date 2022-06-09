@@ -1,6 +1,6 @@
 //Types
 $bug: #729f3f;
-$dragon: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+$dragon: #f16e57;
 $fairy: #fdb9e9;
 $fire: #fd7d24;
 $ghost: #7b62a3;
@@ -11,7 +11,7 @@ $steel: #9eb7b8;
 $dark: #707070;
 $electric: #eed535;
 $fighting: #d56723;
-$flying: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
+$flying: #3dc7ef;
 $grass: #9bcc50;
 $ice: #51c4e7;
 $poison: #b97fc9;
@@ -39,13 +39,13 @@ $water: #4592c4;
 }
 
 .ground {
+  color: black !important;
   background: $ground;
-  color: black!important;
 }
 
 .normal {
+  color: black !important;
   background: $normal;
-  color: black!important;
 }
 
 .psychic {
@@ -53,8 +53,8 @@ $water: #4592c4;
 }
 
 .steel {
+  color: black !important;
   background: $steel;
-  color: black!important;
 }
 
 .dark {
@@ -62,8 +62,8 @@ $water: #4592c4;
 }
 
 .electric {
+  color: black !important;
   background: $electric;
-  color: black!important;
 }
 
 .fighting {
@@ -71,18 +71,18 @@ $water: #4592c4;
 }
 
 .flying {
+  color: black !important;
   background: $flying;
-  color: black!important;
 }
 
 .grass {
+  color: black !important;
   background: $grass;
-  color: black!important;
 }
 
 .ice {
+  color: black !important;
   background: $ice;
-  color: black!important;
 }
 
 .poison {

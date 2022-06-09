@@ -15,16 +15,20 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.27.2",
     "eslint-config-prettier": "^8.5.0",
+    "framer-motion": "^6.3.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",
+    "react-intersection-observer": "^9.2.0",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-select": "^5.3.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
+    "stylelint-selector-bem-pattern": "^2.1.1",
     "typescript": "^4.6.4",
+    "uniqid": "^5.4.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -54,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@types/uniqid": "^5.3.2",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
     "eslint": "^7.32.0 || ^8.2.0",
@@ -63,6 +68,10 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "postcss-bem-linter": "^3.3.0",
+    "postcss-scss": "^4.0.4",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^4.0.0"
   }
 }

@@ -1,0 +1,29 @@
+.header__select-container {
+  font-family: "Exo 2", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  z-index: 100;
+  width: 300px;
+}
+.header__select-container .select__control {
+  border: 3px solid #616161;
+  border-radius: 15px;
+}
+.header__select-container .select__control:hover {
+  border-color: #616161;
+}
+.header__select-container .select__control--is-focused {
+  border-color: #616161;
+  box-shadow: 0 0 5px 2px rgb(221, 221, 221);
+}
+.header__select-container .select__control .select__indicators {
+  order: -1;
+}
+.header__select-container .select__control .select__indicators .select__indicator-separator {
+  display: none;
+}
+.header__select-container .select__control .select__indicators .select__clear-indicator {
+  order: 2;
+}
+
+/*# sourceMappingURL=PokemonSelect.css.map */

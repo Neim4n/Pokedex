@@ -1,21 +1,20 @@
 import { Dispatch } from 'redux';
 import axios from 'axios';
-import { IPokemon, PokemonsAction, PokemonsActionTypes } from '../types/pokemons';
 
-function filterFetchResult(array:any[]) {
-  return array.filter((e:any) => e.url.split('/').slice(-2, -1) < 10000);
-}
+import {
+  IFetchPokemonData, PokemonsAction, PokemonsActionTypes,
+} from '../types/pokemons';
+import { filterFetchResult, getPokemon, getPokemons } from '../../modules/fetchPokemons';
+
+/* eslint-disable max-len */
 
 export const fetchAllPokemons = () => async (dispatch: Dispatch<PokemonsAction>) => {
   try {
     dispatch({ type: PokemonsActionTypes.LOADING_ON });
-    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
-    dispatch({
-      type: PokemonsActionTypes.FETCH_POKEMONS,
-      playload: filterFetchResult(response.data.results),
-    });
+    const response = await getPokemons(null);
+    dispatch({ type: PokemonsActionTypes.FETCH_POKEMONS, playload: response });
   } catch (e) {
-    dispatch({ type: PokemonsActionTypes.FETCH_POKEMONS, playload: [] });
+    dispatch({ type: PokemonsActionTypes.FETCH_ERROR });
   }
 };
 
@@ -23,77 +22,54 @@ export const fetchAllTypes = () => async (dispatch: Dispatch<PokemonsAction>) =>
   try {
     dispatch({ type: PokemonsActionTypes.LOADING_ON });
     const response = await axios.get('https://pokeapi.co/api/v2/type');
-    const types = filterFetchResult(response.data.results).map((e:any) => ({
+    const types = filterFetchResult(response.data.results).map((e:IFetchPokemonData) => ({
       name: e.name,
       code: e.url.split('/').slice(-2, -1),
     }));
     dispatch({ type: PokemonsActionTypes.FETCH_TYPES, playload: types });
   } catch (e) {
-    dispatch({ type: PokemonsActionTypes.FETCH_TYPES, playload: [] });
+    dispatch({ type: PokemonsActionTypes.FETCH_ERROR });
   }
 };
 
-// eslint-disable-next-line max-len
-export const fetchTypeSortedPokemons = (type:number) => async (dispatch: Dispatch<PokemonsAction>) => {
+export const fetchTypeSortedPokemons = (type:number | null) => async (dispatch: Dispatch<PokemonsAction>) => {
   try {
     dispatch({ type: PokemonsActionTypes.LOADING_ON });
-    const response = await axios.get(`https://pokeapi.co/api/v2/type/${type}`);
-    // eslint-disable-next-line max-len
-    const sortedPokemons = response.data.pokemon.map((e:any) => ({ name: e.pokemon.name, url: e.pokemon.url }));
-    dispatch({
-      type: PokemonsActionTypes.FETCH_SORTED_POKEMONS,
-      playload: filterFetchResult(sortedPokemons),
-    });
+    const response = await getPokemons(type);
+    dispatch({ type: PokemonsActionTypes.FETCH_SORTED_POKEMONS, playload: response });
   } catch (e) {
-    dispatch({ type: PokemonsActionTypes.FETCH_SORTED_POKEMONS, playload: [] });
+    dispatch({ type: PokemonsActionTypes.FETCH_ERROR });
   }
 };
 
-const formatPokemonInformation = (data:any): IPokemon => ({
-  name: data.name[0].toUpperCase() + data.name.slice(1),
-  image: data.sprites.other['official-artwork'].front_default,
-  types: data.types,
-  moves: data.moves,
-  stats: data.stats,
-  order: data.order,
-});
-
-// eslint-disable-next-line max-len
 export const fetchPokemonPage = (pokemonName:string) => async (dispatch: Dispatch<PokemonsAction>) => {
   try {
     dispatch({ type: PokemonsActionTypes.LOADING_ON });
-    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-    // eslint-disable-next-line max-len
-    dispatch({ type: PokemonsActionTypes.FETCH_POKEMON_PAGE, playload: formatPokemonInformation(response.data) });
+    const response = await getPokemon(pokemonName, 'page');
+    dispatch({ type: PokemonsActionTypes.FETCH_POKEMON_PAGE, playload: response });
   } catch (e) {
-    dispatch({
-      type: PokemonsActionTypes.FETCH_POKEMON_PAGE,
-      playload: {
-        name: '', image: '', types: [], stats: [], moves: [], order: 0,
-      },
-    });
+    dispatch({ type: PokemonsActionTypes.FETCH_ERROR });
   }
 };
 
-// eslint-disable-next-line max-len
-export const fetchPokemonsInformation = (limit:number, offset:number, currentPokemons: any[], pokemons: any[]) => async (dispatch: Dispatch<PokemonsAction>) => {
+export const fetchPokemonCards = (limit:number, offset:number, currentPokemons: any[], pokemons: any[]) => async (dispatch: Dispatch<PokemonsAction>) => {
   try {
     dispatch({ type: PokemonsActionTypes.LOADING_ON });
     const newPokemons = await Promise.all(pokemons.slice(offset, offset + limit).map(async (e) => {
-      const response = await axios.get(e.url);
-      return formatPokemonInformation(response.data);
+      const response = await getPokemon(e.name, 'card');
+      return response;
     }));
-    // eslint-disable-next-line max-len
-    if (newPokemons.every((i:any) => currentPokemons.some((j) => j.name === i.name))) {
-      throw new Error('Extra request');
+
+    if (pokemons.length === newPokemons.length + currentPokemons.length) {
+      dispatch({ type: PokemonsActionTypes.SHOW_MORE, playload: false });
     }
 
     dispatch({
-      type: PokemonsActionTypes.FETCH__CURRENT_POKEMONS,
+      type: PokemonsActionTypes.FETCH_CURRENT_POKEMONS,
       playload: [...currentPokemons, ...newPokemons],
     });
   } catch (e) {
-    dispatch({ type: PokemonsActionTypes.FETCH__CURRENT_POKEMONS, playload: [...currentPokemons] });
+    dispatch({ type: PokemonsActionTypes.FETCH_ERROR });
   }
 };
 
@@ -101,4 +77,10 @@ export const increaseOffset = () => ({ type: PokemonsActionTypes.INCREASE_OFFSET
 
 export const nullCurrentPokemons = () => ({ type: PokemonsActionTypes.NULL_CURRENT_POKEMONS });
 
-export const startLoading = () => ({ type: PokemonsActionTypes.LOADING_ON });
+export const loadingOn = () => ({ type: PokemonsActionTypes.LOADING_ON });
+
+export const loadingOff = () => ({ type: PokemonsActionTypes.LOADING_OFF });
+
+export const showMoreAction = (playload : boolean) => ({ type: PokemonsActionTypes.SHOW_MORE, playload });
+
+/* eslint-disable max-len */

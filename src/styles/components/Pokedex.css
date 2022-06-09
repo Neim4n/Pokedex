@@ -1,71 +1,59 @@
 .pokedex {
-  flex: 1 1 100%;
-  padding: 0 40px 0;
   display: flex;
-  flex-direction: column;
-}
-.pokedex .pokedex__container {
-  padding: 140px 40px 40px;
-  background: white;
-  flex: 1 1 100%;
-  width: 100%;
-  max-width: 1420px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
   align-items: center;
+  flex: 1 1 100%;
+  flex-direction: column;
   min-height: 100%;
+  padding: 140px 40px 20px;
+  background: white;
+  box-shadow: 0 0 10px 5px rgb(221, 221, 221);
 }
-.pokedex .pokedex__container .pokedex__pokemon-card-list {
+.pokedex .pokedex__pokemon-card-list {
+  display: grid;
   flex: 1 1 auto;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  display: grid;
   grid-template-rows: min-content;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 40px;
-  justify-content: center;
-  margin-bottom: 40px;
 }
-.pokedex .pokedex__container .pokedex__load-button {
-  padding: 20px;
-  justify-self: flex-end;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.pokedex .pokedex__load-button {
   font-size: 20px;
   font-weight: 800;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 40px;
+  padding: 20px;
   color: white;
+  border-radius: 20px;
   background: #53a4cf;
-  transform: scale(1);
-  transition: 0.1s ease-in-out transform;
+  justify-self: flex-end;
 }
-.pokedex .pokedex__container .pokedex__load-button.hidden {
-  transform: scale(0);
+.pokedex .pokedex__load-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5 !important;
+  background: #7c7c7c;
 }
-.pokedex .pokedex__container .pokedex__load-button .button_text {
+.pokedex .pokedex__load-button .button_text {
   margin-right: 10px;
 }
-.pokedex .pokedex__container .pokedex__load-button svg {
+.pokedex .pokedex__load-button svg {
   width: 30px;
   height: 30px;
 }
 
 @media screen and (max-width: 767.98px) {
   .pokedex {
-    padding: 20px;
+    padding: 140px 10px 10px;
   }
-  .pokedex .pokedex__container {
-    padding: 10px;
+  .pokedex .pokedex__pokemon-card-list {
+    gap: 20px;
   }
-}
-@media screen and (max-width: 499.98px) {
-  .pokedex {
-    padding: 0px;
-  }
-  .pokedex .pokedex__container {
-    padding: 10px;
+  .pokedex .pokedex__load-button {
+    margin-top: 20px;
   }
 }
 

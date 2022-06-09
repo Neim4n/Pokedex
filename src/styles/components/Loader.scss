@@ -1,35 +1,18 @@
-.loader{
-  z-index: 50;
+.loader {
   position: fixed;
+  z-index: 50;
   bottom: 50px;
   left: 50%;
-  transform: translate(-50%,0) scale(0);
-  transition: 0.2s ease-in-out all 0.3s;
 
-  &.loading{
-    transform: translate(-50%,0) scale(1) ;
-    transition: 0.05s ease-in-out all;
-  }
-
-  .loader__image{
+  .loader__image {
     font-size: 250px;
     color: #616161;
-    animation: 2s spin linear infinite;
-  }
-}
-
-@keyframes spin {
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
   }
 }
 
 @media screen and(max-width: 767.98px) {
-  .loader{
-    .loader__image{
+  .loader {
+    .loader__image {
       font-size: 100px;
     }
   }

@@ -1,4 +1,4 @@
-import { PokemonsActionTypes, PokemonsAction, PokemonsState } from '../types/pokemons';
+import { PokemonsAction, PokemonsActionTypes, PokemonsState } from '../types/pokemons';
 
 const initialState: PokemonsState = {
   defaultPokemons: [],
@@ -6,11 +6,13 @@ const initialState: PokemonsState = {
   sortedPokemons: [],
   currentPokemons: [],
   pokemonPage: {
-    name: '', image: '', types: [], stats: [], moves: [], order: 0,
+    name: '', image: '', types: [], order: 0, stats: [], moves: [], abilities: [], species: {}, height: 0, weight: 0,
   },
   offset: 0,
   limit: 12,
+  showMore: true,
   loading: true,
+  error: false,
 };
 
 // eslint-disable-next-line default-param-last
@@ -20,6 +22,27 @@ export const pokemonReducer = (state = initialState, action: PokemonsAction): Po
       return {
         ...state,
         loading: true,
+      };
+    case PokemonsActionTypes.LOADING_OFF:
+      return {
+        ...state,
+        loading: false,
+      };
+    case PokemonsActionTypes.SHOW_MORE:
+      return {
+        ...state,
+        showMore: action.playload,
+      };
+    case PokemonsActionTypes.INCREASE_OFFSET:
+      return {
+        ...state,
+        offset: state.offset + state.limit,
+      };
+    case PokemonsActionTypes.FETCH_ERROR:
+      return {
+        ...state,
+        error: true,
+        loading: false,
       };
     case PokemonsActionTypes.FETCH_POKEMONS:
       return {
@@ -37,16 +60,10 @@ export const pokemonReducer = (state = initialState, action: PokemonsAction): Po
         ...state,
         defaultTypes: action.playload,
       };
-    case PokemonsActionTypes.FETCH__CURRENT_POKEMONS:
+    case PokemonsActionTypes.FETCH_CURRENT_POKEMONS:
       return {
         ...state,
         currentPokemons: action.playload,
-        loading: false,
-      };
-    case PokemonsActionTypes.INCREASE_OFFSET:
-      return {
-        ...state,
-        offset: state.offset + state.limit,
       };
     case PokemonsActionTypes.NULL_CURRENT_POKEMONS:
       return {

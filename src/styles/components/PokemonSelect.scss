@@ -1,0 +1,51 @@
+.header__select-container {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  z-index: 100;
+  width: 300px;
+ // margin-right: 20px;
+
+  .select__control {
+    border: 3px solid #616161;
+    border-radius: 15px;
+
+    &:hover{
+      border-color: #616161;
+    }
+
+    &--is-focused{
+      border-color: #616161;
+      box-shadow: 0 0 5px 2px rgba(221, 221, 221, 1);
+    }
+
+    .select__value-container {
+
+    }
+
+    .select__indicators {
+      order: -1;
+
+      .select__indicator-separator {
+        display: none;
+      }
+
+      .select__dropdown-indicator {
+      }
+
+      .select__clear-indicator {
+        order: 2;
+      }
+    }
+  }
+
+  .select__menu {
+    .select__menu-list {
+
+    }
+
+    .select__option {
+
+    }
+  }
+}
